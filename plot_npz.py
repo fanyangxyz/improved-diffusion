@@ -37,10 +37,11 @@ def save_image(sample, nrow, name):
     plt.close('all')
 
 batch_size = len(arr)
-fig, ax = plt.subplots(batch_size, 1)
-#for i, ax in enumerate(axes.flat):
-ax.imshow(arr[0])
-ax.axis('off')
+print('batch size', batch_size)
+fig, axes = plt.subplots(batch_size // 4, 4)
+for i, ax in enumerate(axes.flat):
+    ax.imshow(arr[i])
+    ax.axis('off')
 
 plt.subplots_adjust(wspace=0, hspace=0)
 fig.savefig(os.path.join(image_dir, 'sampled_images.png'))
